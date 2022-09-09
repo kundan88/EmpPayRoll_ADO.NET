@@ -21,7 +21,8 @@
             model.Country = "India";
 
 
-            repo.AddEmployee(model);
+           // repo.AddEmployee(model);
+            repo.GetAllEmployees();
         }
     }
 }

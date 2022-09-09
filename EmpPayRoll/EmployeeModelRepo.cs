@@ -50,5 +50,43 @@ namespace EmpPayRoll
                 throw new Exception(e.Message);
             }
         }
+        public List<EmployeeModel> GetAllEmployees()
+        {
+            List<EmployeeModel> employees = new List<EmployeeModel>();
+            SqlCommand command = new SqlCommand("spViewEmployeeData", connection);
+            command.CommandType = CommandType.StoredProcedure;
+
+            connection.Open();
+            SqlDataReader row = command.ExecuteReader();
+
+
+            EmployeeModel model = new EmployeeModel();
+
+            while (row.Read())
+            {
+
+                model.EmployeeId = row.GetInt32(0);
+                model.EmployeeName = row.GetString(1);
+                model.PhoneNumber = row.GetString(2);
+                model.Address = row.GetString(3);
+                model.Department = row.GetString(4);
+                model.Gender = row.GetString(5);
+                model.BasicPay = row.GetInt32(6);
+                model.Deductions = row.GetInt32(7);
+                model.TaxablePay = row.GetInt32(8);
+                model.Tax = row.GetInt32(9);
+                model.NetPay = row.GetInt32(10);
+                model.StartDate = row.GetDateTime(11);
+                model.City = row.GetString(12);
+                model.Country = row.GetString(13);
+
+                employees.Add(model);
+                Console.WriteLine(model.EmployeeId + " " + model.EmployeeName + " " + model.PhoneNumber + " " + model.Address + " " + model.Department + " " + model.StartDate + " " + model.Address + " " + model.Gender + " " + model.BasicPay + " " + model.Deductions + " " + model.TaxablePay + " " + model.Tax + " " + model.NetPay + " " + model.StartDate + " " + model.City + " " + model.Country);
+
+            }
+
+            connection.Close();
+            return employees;
+        }
     }
 }
