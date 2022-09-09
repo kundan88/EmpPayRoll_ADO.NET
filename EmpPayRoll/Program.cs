@@ -26,7 +26,8 @@
            /* model.EmployeeName = "Kundan";
             model.BasicPay = 12000;
             repo.UpdateEmp(model);*/
-            
+            repo.DeleteEmployee(1);
+          
         }
     }
 }
