@@ -22,7 +22,11 @@
 
 
            // repo.AddEmployee(model);
-            repo.GetAllEmployees();
+           // repo.GetAllEmployees();
+           /* model.EmployeeName = "Kundan";
+            model.BasicPay = 12000;
+            repo.UpdateEmp(model);*/
+            
         }
     }
 }
